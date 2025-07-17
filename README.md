@@ -53,6 +53,9 @@ Rol: Usuario
 
 ### Backend
 ```bash
+# Clonar repositorio
+https://github.com/Jesvarg/gestion-libros-flask.git
+
 cd backend
 source venv/Scripts/activate
 pip install -r requirements.txt
@@ -62,6 +65,8 @@ python app.py
 ### Frontend
 ```bash
 cd frontend
+
+# Instalar dependencias
 npm install
 npm run dev
 ```
