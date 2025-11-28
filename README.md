@@ -1,4 +1,4 @@
-# 📚 App de Gestión de Libros
+# Aplicación web para gestión de libros
 
 App para gestionar una biblioteca sencilla con autenticación por roles.
 
@@ -16,11 +16,11 @@ App para gestionar una biblioteca sencilla con autenticación por roles.
 
 ## ✨ Características
 
-- 🔐 **Autenticación por roles** (Usuario, Moderador, Admin)
-- 📖 **CRUD** de libros
-- 🔍 **Búsqueda** por título y autor
-- 📱 **Diseño responsive**
-- 📝 **Validaciones y manejo de errores** en el frontend y backend
+- **Autenticación por roles** (Usuario, Moderador, Admin)
+- **CRUD** de libros
+- **Búsqueda** por título y autor
+- **Diseño responsive**
+- **Validaciones y manejo de errores** en el frontend y backend
 
 ## 👥 Roles y Permisos
 
