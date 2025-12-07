@@ -2,7 +2,7 @@
 
 App para gestionar una biblioteca sencilla con autenticación por roles.
 
-## 🚀 Tecnologías
+## Tecnologías
 
 **Backend:**
 - Python + Flask + SQLAlchemy (ORM)
@@ -14,7 +14,7 @@ App para gestionar una biblioteca sencilla con autenticación por roles.
 - Framer Motion (Animaciones)
 - React Router (Navegación)
 
-## ✨ Características
+## Características
 
 - **Autenticación por roles** (Usuario, Moderador, Admin)
 - **CRUD** de libros
@@ -22,7 +22,7 @@ App para gestionar una biblioteca sencilla con autenticación por roles.
 - **Diseño responsive**
 - **Validaciones y manejo de errores** en el frontend y backend
 
-## 👥 Roles y Permisos
+## Roles y Permisos
 
 | Rol | Ver Libros | Añadir | Editar | Eliminar |
 |-----|------------|--------|--------|----------|
@@ -30,7 +30,7 @@ App para gestionar una biblioteca sencilla con autenticación por roles.
 | **Moderador** | ✅ | ✅ | ✅ | ❌ |
 | **Admin** | ✅ | ✅ | ✅ | ✅ |
 
-## 🧪 Usuarios de Prueba
+## Usuarios de Prueba
 
 ```bash
 # Administrador (Acceso completo)
@@ -49,12 +49,12 @@ Contraseña: 123456
 Rol: Usuario
 ```
 
-## 🚀 Instalación y Uso
+## Instalación y Uso
 
 ### Backend
 ```bash
 # Clonar repositorio
-https://github.com/Jesvarg/gestion-libros-flask.git
+git clone https://github.com/Jesvarg/gestion-libros-flask.git
 
 cd backend
 source venv/Scripts/activate
@@ -71,7 +71,7 @@ npm install
 npm run dev
 ```
 
-## 📁 Estructura
+## Estructura
 
 ```
 gestion-libros/
@@ -87,5 +87,5 @@ gestion-libros/
     └── package.json
 ```
 
-## 📝 Notas
+## Notas
 - Este proyecto es una demostración de habilidades para desarrollar una aplicación simple de gestión de libros.
