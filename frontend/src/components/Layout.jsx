@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MdMenuBook, MdAdd, MdLogout } from 'react-icons/md';
+import { ModalContext } from '../context/ModalContext';
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
+  const { abrirModalNuevo } = useContext(ModalContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [userRole, setUserRole] = useState('');
@@ -30,11 +33,11 @@ const Layout = ({ children }) => {
 
   const getNavItems = () => {
     const items = [
-      { icon: '📚', label: 'Libros', path: '/libros' },
+      { icon: <MdMenuBook />, label: 'Libros', path: '/libros', onClick: null },
     ];
     
     if (puedeAñadir()) {
-      items.push({ icon: '➕', label: 'Añadir', path: '/libros/nuevo' });
+      items.push({ icon: <MdAdd />, label: 'Añadir', path: null, onClick: abrirModalNuevo });
     }
     
     return items;
@@ -58,7 +61,7 @@ const Layout = ({ children }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="text-2xl">📚</div>
+              <div className="text-2xl text-blue-600"><MdMenuBook /></div>
               <h1 className="text-xl font-bold text-gray-800 hidden sm:block">
                 Gestor de Libros
               </h1>
@@ -69,8 +72,8 @@ const Layout = ({ children }) => {
               <nav className="hidden md:flex items-center gap-2">
                 {getNavItems().map((item, index) => (
                   <motion.button
-                    key={item.path}
-                    onClick={() => navigate(item.path)}
+                    key={item.label}
+                    onClick={() => item.onClick ? item.onClick() : navigate(item.path)}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -78,7 +81,7 @@ const Layout = ({ children }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 + 0.3 }}
                   >
-                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-lg text-blue-600">{typeof item.icon === 'string' ? item.icon : item.icon}</span>
                     <span className="font-medium">{item.label}</span>
                   </motion.button>
                 ))}
@@ -92,7 +95,7 @@ const Layout = ({ children }) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <span className="text-lg">🚪</span>
+                  <span className="text-lg text-red-600"><MdLogout /></span>
                   <span className="font-medium">Salir</span>
                 </motion.button>
               </nav>
@@ -127,14 +130,18 @@ const Layout = ({ children }) => {
               <div className="px-4 py-3 space-y-2">
                 {getNavItems().map((item) => (
                   <button
-                    key={item.path}
+                    key={item.label}
                     onClick={() => {
-                      navigate(item.path);
+                      if (item.onClick) {
+                        item.onClick();
+                      } else {
+                        navigate(item.path);
+                      }
                       setShowMobileMenu(false);
                     }}
                     className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
                   >
-                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-lg text-blue-600">{typeof item.icon === 'string' ? item.icon : item.icon}</span>
                     <span>{item.label}</span>
                   </button>
                 ))}
@@ -165,7 +172,7 @@ const Layout = ({ children }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Gestor de Libros - Diseñado con ❤️
+            © {new Date().getFullYear()} Gestor de Libros
           </p>
         </div>
       </motion.footer>

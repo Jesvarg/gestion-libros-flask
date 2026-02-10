@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { login } from '../services/api';
 import toast from 'react-hot-toast';
+import { MdMenuBook, MdLock } from 'react-icons/md';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -59,7 +60,7 @@ const Login = () => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('userRole', res.data.rol);
         localStorage.setItem('username', res.data.username);
-        toast.success('¡Bienvenido! 🎉');
+        toast.success('¡Bienvenido!');
         navigate('/libros');
       }
     } catch (err) {
@@ -88,9 +89,11 @@ const Login = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">📚</div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Gestor de Libros</h1>
-          <p className="text-sm sm:text-base text-gray-600">Inicia sesión para continuar</p>
+          <div className="flex items-center text-5xl sm:text-6xl mb-3 sm:mb-4 text-blue-600">
+            <MdMenuBook />
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 ml-3 sm:ml-4">Gestor de Libros</h1>
+          </div>
+
         </motion.div>
 
         <motion.form 
@@ -107,7 +110,7 @@ const Login = () => {
             transition={{ delay: 0.4 }}
           >
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              👤 Usuario
+            Usuario
             </label>
             <input
               type="text"
@@ -126,7 +129,7 @@ const Login = () => {
             transition={{ delay: 0.5 }}
           >
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              🔒 Contraseña
+            Contraseña
             </label>
             <input
               type="password"
@@ -145,16 +148,16 @@ const Login = () => {
             transition={{ delay: 0.6 }}
           >
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              🎭 Rol
+            Rol
             </label>
             <select
               value={rol}
               onChange={(e) => setRol(e.target.value)}
               className="input-modern w-full text-sm sm:text-base"
             >
-              <option value="admin">👑 Administrador</option>
-              <option value="moderador">🛡️ Moderador</option>
-              <option value="usuario">👤 Usuario</option>
+              <option value="admin">Administrador</option>
+              <option value="moderador">Moderador</option>
+              <option value="usuario">Usuario</option>
             </select>
           </motion.div>
 
@@ -175,7 +178,7 @@ const Login = () => {
                 <span className="text-sm sm:text-base">Iniciando sesión...</span>
               </div>
             ) : (
-              '🚀 Iniciar Sesión'
+              'Iniciar Sesión'
             )}
           </motion.button>
         </motion.form>
@@ -187,7 +190,7 @@ const Login = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          Sistema de Gestión de Libros v2.0
+          Sistema de Gestión de Libros
         </motion.div>
       </motion.div>
     </div>

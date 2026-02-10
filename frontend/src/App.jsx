@@ -3,7 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import Login from './components/Login';
 import ListarLibros from './components/ListarLibros';
 import Layout from './components/Layout';
-import FormularioLibro from './components/FormularioLibro';
+import { ModalProvider } from './context/ModalContext';
 
 // Componente para proteger rutas
 const ProtectedRoute = ({ children }) => {
@@ -15,50 +15,22 @@ function App() {
   return (
     <div className="App">
       <Toaster position="top-right" />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route 
-          path="/libros" 
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <ListarLibros />
-              </Layout>
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/nuevo" 
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <FormularioLibro />
-              </Layout>
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/libros/nuevo" 
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <FormularioLibro />
-              </Layout>
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/libros/editar/:id" 
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <FormularioLibro />
-              </Layout>
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
+      <ModalProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route 
+            path="/libros" 
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ListarLibros />
+                </Layout>
+              </ProtectedRoute>
+            } 
+          />
+        </Routes>
+      </ModalProvider>
     </div>
   );
 }

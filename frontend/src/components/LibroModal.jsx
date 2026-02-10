@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { motion as Motion } from 'framer-motion';
 import { crearLibro, actualizarLibro } from '../services/api';
+import { MdBook, MdEdit } from 'react-icons/md';
 
 const LibroModal = ({ libro, onClose, onSave }) => {
   const [titulo, setTitulo] = useState(libro?.titulo || '');
@@ -32,10 +33,10 @@ const LibroModal = ({ libro, onClose, onSave }) => {
     try {
       if (libro?.id) {
         await actualizarLibro(libro.id, datos);
-        toast.success('📘 Libro actualizado');
+        toast.success('Libro actualizado');
       } else {
         await crearLibro(datos);
-        toast.success('📘 Libro creado');
+        toast.success('Libro creado');
       }
       onSave();
     } catch (err) {
@@ -55,8 +56,16 @@ const LibroModal = ({ libro, onClose, onSave }) => {
         exit={{ scale: 0.8, opacity: 0 }}
         className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md mx-4"
       >
-        <h2 className="text-xl font-bold mb-4 text-gray-800">
-          {libro?.id ? '✏️ Editar Libro' : '📘 Nuevo Libro'}
+        <h2 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+          {libro?.id ? (
+            <>
+              <MdEdit className="text-blue-600" /> Editar Libro
+            </>
+          ) : (
+            <>
+              <MdBook className="text-blue-600" /> Nuevo Libro
+            </>
+          )}
         </h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">

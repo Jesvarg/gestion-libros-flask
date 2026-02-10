@@ -56,9 +56,13 @@ Rol: Usuario
 # Clonar repositorio
 git clone https://github.com/Jesvarg/gestion-libros-flask.git
 
+# Crear entorno virtual e instalar dependencias
 cd backend
+python -m venv venv
 source venv/Scripts/activate
 pip install -r requirements.txt
+
+# Ejecutar el servidor
 python app.py
 ```
 

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { getLibroPorId, crearLibro, actualizarLibro } from '../services/api';
+import { MdEdit, MdBook, MdAttachMoney, MdArrowBack } from 'react-icons/md';
 
 const FormularioLibro = () => {
   const navigate = useNavigate();
@@ -89,10 +90,10 @@ const FormularioLibro = () => {
     try {
       if (esEdicion) {
         await actualizarLibro(id, datos);
-        toast.success('📘 Libro actualizado exitosamente');
+        toast.success('Libro actualizado exitosamente');
       } else {
         await crearLibro(datos);
-        toast.success('📘 Libro creado exitosamente');
+        toast.success('Libro creado exitosamente');
       }
       navigate('/libros');
     } catch (err) {
@@ -136,8 +137,8 @@ const FormularioLibro = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="text-5xl mb-4">
-            {esEdicion ? '✏️' : '📘'}
+          <div className="text-5xl mb-4 flex justify-center text-blue-600">
+            {esEdicion ? <MdEdit /> : <MdBook />}
           </div>
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             {esEdicion ? 'Editar Libro' : 'Nuevo Libro'}
@@ -160,8 +161,8 @@ const FormularioLibro = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              📖 Título del Libro
+            <label className="flex text-gray-700 text-sm font-medium mb-2 items-center gap-2">
+              <MdBook className="text-blue-600" /> Título del Libro
             </label>
             <input
               type="text"
@@ -177,7 +178,7 @@ const FormularioLibro = () => {
                 {titulo.length}/30 caracteres
               </span>
               {titulo.length > 30 && (
-                <span className="text-xs text-red-500">⚠️ Excede el límite</span>
+                <span className="text-xs text-red-500">Excede el límite</span>
               )}
             </div>
           </motion.div>
@@ -188,8 +189,8 @@ const FormularioLibro = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              ✍️ Autor
+            <label className="flex text-gray-700 text-sm font-medium mb-2 items-center gap-2">
+              <MdEdit className="text-green-600" /> Autor
             </label>
             <input
               type="text"
@@ -205,7 +206,7 @@ const FormularioLibro = () => {
                 {autor.length}/30 caracteres
               </span>
               {autor.length > 30 && (
-                <span className="text-xs text-red-500">⚠️ Excede el límite</span>
+                <span className="text-xs text-red-500">Excede el límite</span>
               )}
             </div>
           </motion.div>
@@ -216,8 +217,8 @@ const FormularioLibro = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              💰 Precio
+            <label className="flex text-gray-700 text-sm font-medium mb-2 items-center gap-2">
+              <MdAttachMoney className="text-green-600" /> Precio
             </label>
             <div className="relative">
               <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg">$</span>
@@ -244,11 +245,11 @@ const FormularioLibro = () => {
             <motion.button
               type="button"
               onClick={() => navigate('/libros')}
-              className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition-all duration-200"
+              className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition-all duration-200 flex items-center justify-center gap-2"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              ← Cancelar
+              <MdArrowBack className="text-gray-700" /> Cancelar
             </motion.button>
             <motion.button
               type="submit"
@@ -264,7 +265,7 @@ const FormularioLibro = () => {
                 </div>
               ) : (
                 <span>
-                  {esEdicion ? '💾 Actualizar Libro' : '✨ Crear Libro'}
+                  {esEdicion ? 'Actualizar Libro' : 'Crear Libro'}
                 </span>
               )}
             </motion.button>
