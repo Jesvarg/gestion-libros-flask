@@ -5,7 +5,7 @@ App para gestionar una biblioteca sencilla con autenticación por roles.
 ## Capturas
 
 <p align="center">
-  <img src="docs/images/login.jpg" width="700"/>
+  <img src="docs/images/login.JPG" width="700"/>
 </p>
 
 <p align="center">
