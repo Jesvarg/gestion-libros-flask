@@ -2,6 +2,20 @@
 
 App para gestionar una biblioteca sencilla con autenticación por roles.
 
+## Capturas
+
+<p align="center">
+  <img src="docs/images/login.jpg" width="700"/>
+</p>
+
+<p align="center">
+  <img src="docs/images/create.jpg" width="700"/>
+</p>
+
+<p align="center">
+  <img src="docs/images/main.jpg" width="700"/>
+</p>
+
 ## Tecnologías
 
 **Backend:**
